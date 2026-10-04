@@ -2,7 +2,8 @@ import { GoogleGenAI, Type } from '@google/genai';
 import { DecisionInput, SocraticAnalysisResult, SocraticQuestion } from '../types';
 
 const getApiKey = (): string => {
-  return import.meta.env.VITE_GEMINI_API_KEY || '';
+  const runtimeKey = typeof window !== 'undefined' ? window.__APP_ENV__?.VITE_GEMINI_API_KEY : '';
+  return runtimeKey || import.meta.env.VITE_GEMINI_API_KEY || '';
 };
 
 export const generateFallbackAnalysis = (input: DecisionInput): SocraticAnalysisResult => {

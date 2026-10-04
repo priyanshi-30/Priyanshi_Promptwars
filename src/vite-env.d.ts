@@ -1,5 +1,9 @@
 /// <reference types="vite/client" />
 
+interface Window {
+  __APP_ENV__?: Record<string, string>;
+}
+
 interface ImportMetaEnv {
   readonly VITE_GEMINI_API_KEY?: string;
   readonly VITE_FIREBASE_API_KEY?: string;
